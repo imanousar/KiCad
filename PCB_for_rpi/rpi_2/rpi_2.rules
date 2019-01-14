@@ -1,0 +1,135 @@
+
+(rules PCB rpi_2
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 5891)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.2)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.9)
+    )
+  )
+  (rule
+    (width 400.0)
+    (clear 200.2)
+    (clear 200.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_900:600_um"
+    (shape
+      (circle F.Cu 900.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 900.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_1000:600_um"
+    (shape
+      (circle F.Cu 1000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_1000:700_um"
+    (shape
+      (circle F.Cu 1000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_900:600_um" "Via[0-1]_900:600_um" default
+  )
+  (via 
+    "Via[0-1]_1000:600_um" "Via[0-1]_1000:600_um" default
+  )
+  (via 
+    "Via[0-1]_1000:700_um" "Via[0-1]_1000:700_um" default
+  )
+  (via 
+    "Via[0-1]_900:600_um-kicad_default" "Via[0-1]_900:600_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_1000:600_um-kicad_default" "Via[0-1]_1000:600_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_1000:700_um-kicad_default" "Via[0-1]_1000:700_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_900:600_um-Power" "Via[0-1]_900:600_um" Power
+  )
+  (via 
+    "Via[0-1]_1000:600_um-Power" "Via[0-1]_1000:600_um" Power
+  )
+  (via 
+    "Via[0-1]_1000:700_um-Power" "Via[0-1]_1000:700_um" Power
+  )
+  (via_rule
+    default "Via[0-1]_900:600_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_900:600_um-kicad_default"
+  )
+  (via_rule
+    Power "Via[0-1]_1000:600_um-Power"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 400.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND /GPIO6 "Net-(P1-Pad3)" "Net-(P1-Pad4)" "Net-(P1-Pad5)" "Net-(P1-Pad7)" "Net-(P1-Pad8)" "Net-(P1-Pad10)"
+    "Net-(P1-Pad11)" "Net-(P1-Pad14)" /GPIO23 "Net-(P1-Pad17)" /GPIO24 "Net-(P1-Pad20)" /GPIO7 "Net-(P1-Pad27)"
+    "Net-(P1-Pad28)" "Net-(P1-Pad30)" "Net-(P1-Pad32)" "Net-(P1-Pad33)" "Net-(P1-Pad34)" "Net-(P1-Pad37)" "Net-(P1-Pad39)" /GPIO21
+    "Net-(P1-Pad6)" /GPIO18 /GPIO25 /GPIO8 /GPIO19 /GPIO16 /GPIO20 "Net-(P1-Pad13)"
+    "Net-(P1-Pad15)" "Net-(U1-Pad3)" "Net-(U1-Pad6)" "Net-(U1-Pad9)" "Net-(U1-Pad12)" "Net-(HC-SR04_2-Pad2)" "Net-(HC-SR04_2-Pad3)" "Net-(Motors1-Pad2)"
+    "Net-(Motors1-Pad3)" "Net-(Motors1-Pad4)" "Net-(Motors1-Pad5)" "Net-(Neopixel1-Pad2)" "Net-(C9-Pad1)" "Net-(C10-Pad1)" "Net-(Encoders_2-Pad2)" "Net-(HC-SR4_1-Pad2)"
+    "Net-(HC-SR4_1-Pad3)" /GPIO10 /GPIO9 /GPIO5 /GPIO11 "Net-(BAT_IN1-Pad2)" "Net-(R5-Pad1)" "Net-(Encoders_1-Pad2)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 400.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class Power
+    3V3 5V VBAT 6V7
+    (clearance_class Power)
+    (via_rule Power)
+    (rule
+      (width 600.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
